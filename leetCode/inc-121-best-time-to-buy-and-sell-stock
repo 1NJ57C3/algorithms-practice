@@ -1,0 +1,24 @@
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxProfit = function(prices) {
+    // return 0 if no profits to be made
+    let maxProfit = 0;
+    
+    // get difference between each number and the rest
+    for (let i = 0; i < prices.length; i++) {
+        for (let j = i+1; j < prices.length; j++) {
+            let profit = prices[j] - prices[i];
+
+            if (profit > maxProfit) {
+                maxProfit = profit;
+            }
+        }
+    }
+    
+    // return combination of highest profitable difference
+    return maxProfit;
+    
+    // Time complexity: O(n^2)
+};
