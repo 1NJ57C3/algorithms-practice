@@ -47,8 +47,28 @@ var reverseList = function(head) {
     })();
 };
 
+/* Follow-up: A linked list can be reversed either iteratively or recursively. Could you implement both? */
+var reverseList = function(head) {
+    if (!head|| !head.next) return head;
+    
+    let node = head;
+    let tail = {};
+    let prev = null;
+    
+    while (tail.next !== null) {
+        tail = node.next;
+        node.next = prev;
+        prev = node;
+        node = tail;
+    }
+    
+    node.next = prev;
+    
+    return node;
+};
+
 // Time Complexity - O(n)
 //   O(n) for single traversal
-//   O(3) for 3 reference variables
+//   O(3) for 3 variable assignments
 // Space Complexity - O(1) Auxiliary, O(n) Total
-//   O(1) additional memory for operations
+//   O(3) for 3 reference variables
